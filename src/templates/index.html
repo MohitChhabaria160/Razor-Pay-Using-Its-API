@@ -1,0 +1,53 @@
+ {% extends 'base.html' %}
+ {% block content %}
+ <style>
+  body{
+    background-color: black;
+  }
+  img{
+        border-collapse: collapse;
+        border-radius: 50%;
+    }
+ </style>
+ <div class="col-6 mx-auto">
+    <div class="text-center mt-5">
+      <img src="https://i.pinimg.com/474x/6c/24/db/6c24dbb19ec2c665d7ed97a8007554d8.jpg" class="img-fluid img-responsive" style="height: 200px;">
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1" style="color: lightseagreen; text-shadow: 2px 1px 8px white;">Enter Name</label>
+          <input type="name" name="name" class="form-control" id="exampleInputEmail1">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" style="color: lightseagreen; text-shadow: 2px 1px 8px white; " >Enter Amount</label>
+          <input name="amount" type="number"  class="form-control" id="exampleInputPassword1">
+        </div>
+        <button style="margin-top: 40px;" type="submit" class="btn btn-success btn-block">Submit</button>
+      </form>
+</div>
+
+{%if payment%}
+
+<div class="text-center mx-auto">
+<form action="/success" method="POST">
+  <script
+  src="https://checkout.razorpay.com/v1/checkout.js"
+  data-key="rzp_test_FtwfAmevo4ofaL"
+  data-amount="{{payment.amount}}"
+  data-currency="INR"
+  data-order-id="{{payment.id}}"
+  data-buttontext="Pay With RazorPay"
+  data-name="Coffee corp"
+  data-description="Test transaction"
+  data-image="https://example.com/yourlogo.jpg"
+  data-prefill.name="Mohit"
+  data-prefill.email="Mohit@gmail.com"
+  data-prefill.contact="999999999"
+  data-theme.color="#F37254"
+  ></script>
+  <input type="hidden" custom="hidden element" name="hidden">
+</form>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body{
+        background-color: black;
+    }
+    h2{
+        color: lightseagreen;
+        text-shadow: 2px 2px 8px white;
+        font-family:'Courier New', Courier, monospace;
+    }
+    img{
+        border-collapse: collapse;
+        border-radius: 50%;
+    }
+</style>
+<div class="text-center mt-5 pt-5">
+    <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9sDRJRvcQEroYhiKVwUpkfrO_MPVpmmSQxg&usqp=CAU" alt="">
+    <h2 class="mt-4">Thanks your payment has been recieverd</h2>
+    <a class="btn btn-success" href="/">Buy Again</a>
+</div>
+
+{% endblock %}
