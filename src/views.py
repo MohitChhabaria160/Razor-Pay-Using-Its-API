@@ -13,7 +13,7 @@ def home(request):
         client=razorpay.Client(auth=("rzp_test_uMAJJaTrLzDOLm","ubwzznBGpRTNJMxnv9wHtAAX"))
         payment=client.order.create({'amount':amount, 'currency':'INR',"payment_capture":'1'})
         print(payment)
-        Coffee=coffee(name=name, amount=amount,paymentid=payment["id"])
+        Coffee=coffee(name=name, amount=amount//100,paymentid=payment["id"])
         Coffee.save()
         return render(request, 'index.html', {'payment':payment})
 
