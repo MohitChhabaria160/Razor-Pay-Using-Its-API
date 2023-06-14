@@ -10,7 +10,7 @@ def home(request):
     if request.method=="POST":
         name=request.POST.get("name")
         amount=int(request.POST.get("amount"))*100   
-        client=razorpay.Client(auth=("rzp_test_FtwfAmevo4ofaL","hgsCqmlEqyJRDlty2v2GyjEW"))
+        client=razorpay.Client(auth=("rzp_test_uMAJJaTrLzDOLm","ubwzznBGpRTNJMxnv9wHtAAX"))
         payment=client.order.create({'amount':amount, 'currency':'INR',"payment_capture":'1'})
         print(payment)
         Coffee=coffee(name=name, amount=amount,paymentid=payment["id"])
